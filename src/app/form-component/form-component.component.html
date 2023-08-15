@@ -1,0 +1,61 @@
+
+
+
+<form #ngForm="ngForm" (ngSubmit)="onFormSubmit(ngForm)">
+    <h1>
+        Student login form
+    </h1>
+    <div class="form-group">
+        <label for="exampleRegisterNumber">Register Number</label>
+        <input  #student="ngModel" type="text" class="form-control" id="exampleRegisterNumber" minlength="10"
+        aria-describedby="RegisterHelp" placeholder="Enter your Register Number" ngModel name="student">
+        <small id="RegisterHelp" class="form-check-input">Enter your Register Number</small>
+        <div *ngIf ="student.touched && student.invalid" class="alert  alert-danger">
+          Register Number is required.
+        </div>
+        <!-- For entering number of characters -->
+        <div *ngIf="student.errors?.minlength">
+          Enter minimum 10 characters
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dateofbirth">Date-of-Birth</label>
+        <input #birthdate="ngModel" type="date" class="form-control" id="exampleDateofBirth"
+        aria-describedby="dateofbirth" placeholder="" ngModel name="birthdate">
+        <div *ngIf ="birthdate.touched && birthdate.invalid" class="alert  alert-danger">
+          Date of Birth is required.
+        </div> 
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input  #contactaddress="ngModel" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ngModel name="contactaddress">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      
+      <div *ngIf ="contactaddress.touched && contactaddress.invalid" 
+      class="alert  alert-danger">
+        Email Address is required.
+      </div> 
+    </div>
+  
+    
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input #secretnumber="ngModel" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ngModel name="secretnumber"
+        minlength="15">
+        <div *ngIf="secretnumber.touched && secretnumber.invalid" 
+        class="alert alert-danger">
+          Password is required.
+        </div>
+        <div *ngIf="secretnumber.errors?.minlength">
+          Enter minimum 10 characters
+        </div>
+      </div>
+  
+    
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">I have declared above given details</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
